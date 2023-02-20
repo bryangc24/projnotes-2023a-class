@@ -1,7 +1,11 @@
 var createError = require('http-errors');
+// import the Express Library
 var express = require('express');
+// Is a Core-Node library to manage system paths
 var path = require('path');
+// helps to parse client cookies
 var cookieParser = require('cookie-parser');
+//library to log http commuication
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
