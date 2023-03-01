@@ -7,7 +7,7 @@ var router = express.Router();
 //function es una funcion para mandar a llamar al router
 router.get('/author', function(req, res){
 res.json({
-    "name": "Brayan",
+    "name": "Brayan Martin",
     "lastname": "Garcia",
     "Facebook": "Bryan Garcia",
     "job": "ITGAM"
