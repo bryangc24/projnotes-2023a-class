@@ -1,8 +1,9 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+//Quitamos la palabra function sustitullendo la flecha =>
+router.get('/', (req, res, next) => {
   let iconSet =["🐱‍👤","✌","🙌"];
   let icon = iconSet[Math.floor(Math.random() * 3)]
   res.render('index', { title: 'DWPCII-2023A', icon });

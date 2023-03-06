@@ -1,18 +1,18 @@
-var createError = require('http-errors');
+const createError = require('http-errors');
 // import the Express Library
-var express = require('express');
+const express = require('express');
 // Is a Core-Node library to manage system paths
-var path = require('path');
+const path = require('path');
 // helps to parse client cookies
-var cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 //library to log http commuication
-var logger = require('morgan');
+const logger = require('morgan');
 //importing routes
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var apiRouter = require('./routes/api');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const apiRouter = require('./routes/api');
 // we are creating the express instance
-var app = express();
+const app = express();
 
 // view engine setup
 //we are declaring the localization of the views
@@ -49,7 +49,7 @@ app.use(function(req, res, next) {
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use((err, req, res, next) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
