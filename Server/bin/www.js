@@ -5,13 +5,14 @@
  */
 //se importa en app la logica del servidor
 //require importa codigo de otro archivo
-const app = require('../app');
+import app from '../app';
 //se esta importando una depenecia externa
 //
-const debug = require('debug')('projnotes');
+import Debug from 'debug';
+const debug = Debug('projnotes')
 // Modulo que permite la comunicacion con un cliente
 // via el protocolo HTTP.
-const http = require('http');
+import http from 'http';
 
 /**
  * Get port from environment and store in Express.
@@ -25,7 +26,7 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-const server = http.createServer(app);  //(req,res) =>{Acciones}
+const server = http.createServer(app); // (req, res) => { acciones }  //(req,res) =>{Acciones}
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -73,11 +74,11 @@ function onError(error) {
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
+      console.error(`${bind} requires elevated privileges`);
       process.exit(1);
       break;
     case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
+      console.error(`${bind} is already in use`);
       process.exit(1);
       break;
     default:
@@ -92,8 +93,8 @@ function onError(error) {
 function onListening() {
   const addr = server.address();
   const bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
+  ? `pipe ${addr}`
+  : `port ${addr.port}`;
   // debug('🐱‍👤Listening on ' + bind + '🐱‍👤🐱‍👤');
   // debug(`URL DE APP ${process.env.APP_URL}`);
   debug(`🐱‍👤Listening on ${process.env.APP_URL}:${bind} + 🐱‍👤🐱‍👤`);

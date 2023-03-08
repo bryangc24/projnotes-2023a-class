@@ -1,5 +1,7 @@
-const express = require('express');
-const router = express.Router();
+import express from 'express';
+const { Router } = express;
+
+const router = Router();
 
 /* GET home page. */
 //Quitamos la palabra function sustitullendo la flecha =>
@@ -19,4 +21,4 @@ let author = {
 //seding the view-model to be rendered by a View
 res.render("author",author);
 });
-module.exports = router;
+export default router;

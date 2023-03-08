@@ -1,7 +1,8 @@
 //importing express library
-const express = require('express');
+import express from 'express';
 //creating a router instance
-const router = express.Router();
+const { Router } = express;
+const router = Router();
 
 //creating the route
 //function es una funcion para mandar a llamar al router
@@ -16,4 +17,4 @@ res.json({
 });
 
 //exporting the router
-module.exports = router;
+export default router;

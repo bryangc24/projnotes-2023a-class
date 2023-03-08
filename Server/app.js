@@ -1,16 +1,16 @@
-const createError = require('http-errors');
+import createError from 'http-errors'
 // import the Express Library
-const express = require('express');
+import express from 'express';
 // Is a Core-Node library to manage system paths
-const path = require('path');
+import path from 'path'
 // helps to parse client cookies
-const cookieParser = require('cookie-parser');
+import cookieParser from 'cookie-parser';
 //library to log http commuication
-const logger = require('morgan');
+import logger from 'morgan'
 //importing routes
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const apiRouter = require('./routes/api');
+import indexRouter from './routes/index' 
+import usersRouter from './routes/users';
+import apiRouter from './routes/api';
 // we are creating the express instance
 const app = express();
 
@@ -44,7 +44,7 @@ app.use('/users', usersRouter);
 app.use('/api',apiRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use((req, res, next) =>{
   next(createError(404));
 });
 
@@ -59,4 +59,4 @@ app.use((err, req, res, next) => {
   res.render('error');
 });
 
-module.exports = app;
+export default app;
