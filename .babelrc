@@ -20,7 +20,7 @@
         "module-resolver", {
             "root": ["./"],
             "alias":{
-                "@server" : "./server"
+                "@server" : "./Server"
             }
         }
     ]
