@@ -8,9 +8,9 @@ import cookieParser from 'cookie-parser';
 //library to log http commuication
 import logger from 'morgan'
 //importing routes
-import indexRouter from './routes/index' 
-import usersRouter from './routes/users';
-import apiRouter from './routes/api';
+import indexRouter from '@server/routes/index' 
+import usersRouter from '@server/routes/users';
+import apiRouter from '@server/routes/api';
 // we are creating the express instance
 const app = express();
 
