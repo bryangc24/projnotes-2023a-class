@@ -11,3 +11,7 @@ enviroment the project will use node, for the databases the proyect will use Mon
 
 ## Proyect Notes
 1.[Proyect Creation](https://github.com/bryangc24/projnotes-2023a-class/tree/main)
+5.
+6.Build Script
+7.babel plugins
+8.Addin a bundler
