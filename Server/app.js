@@ -15,7 +15,7 @@ import apiRouter from '@server/routes/api';
 //setting webpack modules
 import webpack from 'webpack';
 import WebpackDevMiddleware from 'webpack-dev-middleware';
-import WebpackDevMiddleware from 'webpack-hot-middleware';
+
 //importing webpack configuration
 import webpackConfig from '../webpack.dev.config';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
