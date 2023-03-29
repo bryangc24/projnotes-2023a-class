@@ -42,7 +42,7 @@ if(nodeEnviroment === 'development'){
 const bundle = webpack(webpackConfig);
 // Enabling the webpack middleware
 app.use(WebpackDevMiddleware(bundle, {
-  publicPath: webpackConfig.output.path
+  publicPath: webpackConfig.output.publicPath
 }));
 // enabling the webpack hot HMR
 app.use(WebpackHotMiddleware(bundle));
@@ -73,7 +73,7 @@ app.use(express.urlencoded({ extended: false }));
 //Parse client cookies into json
 app.use(cookieParser());
 // Set up the static file server
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
 //registering routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
