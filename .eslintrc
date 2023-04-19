@@ -1,11 +1,13 @@
 {
     "parser": "@babel/eslint-parser",
-    "extends":["eslint:recommended"],
-    "rules":{   //esta funcion sirver para que no funcione las comilla simples y agas un string 
-},
-"env": {
-    "es6":true,
-    "node":true,
-    "browser": true
-}
-}
+    "extends":["airbnb-base"],
+    "rules":{
+      /* eslint-disable no-console */
+      "no-console":"off"
+    },
+    "env": {
+      "es6": true,
+      "node": true,
+      "browser": true
+    }
+  }
