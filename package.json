@@ -3,16 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "NODE_ENV=production PORT=3000 APP_URL='http://localhost' DEBUG=projnotes node ./dist/bin/www",
-    "dev": "NODE_ENV=development PORT=3000 APP_URL='http://localhost' DEBUG=projnotes babel-watch --watch ./Server/views ./Server/bin/www",
-    "devc": "NODE_ENV=development webpack serve --config ./webpack.dev.config.js --mode development",
-    "build": "npm run buildc && npm run builds",
-    "builds": "npm run clean && babel ./Server --out-dir dist --copy-files",
-    "buildc": "npm run cleanc && webpack --config ./webpack.config.js --mode production",
-    "clean": "rm -rf ./dist",
-    "cleanc": "rm -f ./public/bundle.js",
-    "lint:c": "eslint ./client/**/*.js",
-    "lint:s": "eslint ./Server/**/*.js"
+    "start": "PORT=3000 APP_URL='http://localhost:' DEBUG=projnotes node ./dist/bin/www",
+    "dev": "PORT=3000 APP_URL='http://localhost:' DEBUG=projnotes babel-watch --watch ./Server/views ./Server/bin/www",
+    "devc": "NODE_ENV=development webpack serve --config ./webpack.config.js --mode development",
+    "build": "npm run clean && babel ./Server --out-dir dist --copy-files",
+    "clean": "rm -rf ./dist"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -20,30 +15,19 @@
     "express": "^4.18.2",
     "hbs": "^4.2.0",
     "http-errors": "~1.6.3",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "webpack-dev-middleware": "^4.2.0",
+    "webpack-hot-middleware": "^2.25.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.21.0",
     "@babel/core": "^7.21.0",
-    "@babel/eslint-parser": "^7.21.3",
     "@babel/preset-env": "^7.20.2",
-    "babel-loader": "^9.1.2",
     "babel-plugin-module-resolver": "^5.0.0",
     "babel-preset-minify": "^0.5.2",
     "babel-watch": "^7.7.2",
     "core-js": "^3.29.1",
-    "css-loader": "^6.7.3",
-    "eslint": "^8.38.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-webpack-plugin": "^4.0.0",
-    "mini-css-extract-plugin": "^2.7.5",
-    "prettier": "^2.8.7",
     "webpack-cli": "^5.0.1",
-    "webpack-dev-middleware": "^6.0.2",
-    "webpack-dev-server": "^4.11.1",
-    "webpack-hot-middleware": "^2.25.3"
+    "webpack-dev-server": "^4.11.1"
   }
 }
