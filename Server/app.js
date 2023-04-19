@@ -6,9 +6,9 @@ import path from 'path'
 // helps to parse client cookies
 import cookieParser from 'cookie-parser';
 //library to log http commuication
-import logger from 'morgan'
+import morgan from 'morgan'
 //importing routes
-import indexRouter from '@server/routes/index' 
+import indexRouter from '@server/routes/index';
 import usersRouter from '@server/routes/users';
 import apiRouter from '@server/routes/api';
 
@@ -65,7 +65,7 @@ app.set('view engine', 'hbs');
 //   next();
 // }); 
 //Log all received requests
-app.use(logger('dev'));
+app.use(morgan('dev'));
 // Parse request data into json
 app.use(express.json());
 // Decode url info
