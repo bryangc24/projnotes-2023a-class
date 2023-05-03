@@ -21,7 +21,7 @@ import WebpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../webpack.dev.config';
 
 // Importando el configurador de motor del motor plantillas
-import configTemplateEngine from './config/configTemplateEngine';
+import configTemplateEngine from './config/templateEngine';
 
 // we are creating the express instance
 const app = express();
