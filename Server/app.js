@@ -20,6 +20,9 @@ import WebpackDevMiddleware from 'webpack-dev-middleware';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../webpack.dev.config';
 
+// Importando el configurador de motor del motor plantillas
+import configTemplateEngine from './config/configTemplateEngine';
+
 // we are creating the express instance
 const app = express();
 
@@ -54,9 +57,8 @@ if (nodeEnviroment === 'development') {
 }
 
 // view engine setup
-// we are declaring the localization of the views
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+configTemplateEngine(app);
+
 // que es app es una instancia de express
 // Register midleware
 // app.use ((req,res,next) => {
