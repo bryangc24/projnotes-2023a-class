@@ -11,6 +11,7 @@
     "buildc": "npm run cleanc && webpack --config ./webpack.config.js --mode production",
     "clean": "rm -rf ./dist",
     "cleanc": "rm -f ./public/bundle.js",
+    "clean:logs" : "rm -rf ./Server/logs/*.log",
     "lint:c": "eslint ./client/**/*.js",
     "lint:s": "eslint ./Server/**/*.js"
   },
