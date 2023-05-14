@@ -4,22 +4,23 @@
   "private": true,
   "scripts": {
     "start": "NODE_ENV=production PORT=3000 APP_URL='http://localhost' DEBUG=projnotes node ./dist/bin/www",
-    "dev": "NODE_ENV=development PORT=3000 APP_URL='http://localhost' DEBUG=projnotes babel-watch --watch ./Server/views ./Server/bin/www",
+    "dev": "NODE_ENV=development PORT=3000 APP_URL='http://localhost' DEBUG=projnotes babel-watch --watch ./server/views ./server/bin/www",
     "devc": "NODE_ENV=development webpack serve --config ./webpack.dev.config.js --mode development",
     "build": "npm run buildc && npm run builds",
-    "builds": "npm run clean && babel ./Server --out-dir dist --copy-files",
+    "builds": "npm run clean && babel ./server --out-dir dist --copy-files",
     "buildc": "npm run cleanc && webpack --config ./webpack.config.js --mode production",
     "clean": "rm -rf ./dist",
-    "cleanc": "rm -f ./public/bundle.js",
-    "clean:logs" : "rm -rf ./Server/logs/*.log",
+    "cleanc": "rm -f ./public/bundle.js ./public/styles/app.css",
     "lint:c": "eslint ./client/**/*.js",
-    "lint:s": "eslint ./Server/**/*.js"
+    "lint:s": "eslint ./server/**/*.js",
+    "clean:logs": "rm -rf ./server/logs/*.log"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "^4.18.2",
     "express-handlebars": "^7.0.7",
+    "hbs": "^4.2.0",
     "http-errors": "~1.6.3",
     "materialize-css": "^1.0.0-rc.2",
     "morgan": "~1.9.1",
