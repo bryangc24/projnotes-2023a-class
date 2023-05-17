@@ -2,16 +2,16 @@
 import { Router } from 'express';
 
 // Importando el controlador
-import homeController from './home.controller';
+import userController from './user.controller';
 
 // Creando una isntancia del enrutador
 const router = new Router();
 
 // Enrutamos
-// GET '/'
-// GET '/home'
-// GET '/index
-router.get(['/', '/home', '/index'], homeController.home);
-
+router.get('/login', userController.login);
+// Enrutamos
+router.get('/logout', userController.logout);
+// Enrutamos
+router.get('/register', userController.register);
 // Exporto este tramo de ruta
 export default router;

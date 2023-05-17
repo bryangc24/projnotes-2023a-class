@@ -2,16 +2,14 @@
 import { Router } from 'express';
 
 // Importando el controlador
-import homeController from './home.controller';
+import proyectsController from './proyectos.controller';
 
 // Creando una isntancia del enrutador
 const router = new Router();
 
 // Enrutamos
-// GET '/'
-// GET '/home'
-// GET '/index
-router.get(['/', '/home', '/index'], homeController.home);
-
+router.get('/projects', proyectsController.projects);
+// Enrutamos
+router.get('/add', proyectsController.add);
 // Exporto este tramo de ruta
 export default router;
