@@ -1,9 +1,9 @@
 // Actions methods
-// GET "/user/login"
-const projects = (req, res) => {
+// GET "/project"
+const showDashboard = (req, res) => {
   res.end('⭐ UNDER CONSTRUCTION: GET /projects ⭐');
 };
-// GET "/user/logout"
+// GET "/project/add"
 const add = (req, res) => {
   res.end('⭐ UNDER CONSTRUCTION: GET /projects/add ⭐');
 };
@@ -11,6 +11,6 @@ const add = (req, res) => {
 // Controlador user
 export default {
   // Action Methods
-  projects,
+  showDashboard,
   add,
 };
