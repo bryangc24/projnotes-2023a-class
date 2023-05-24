@@ -1,6 +1,5 @@
 // Importando el paquete Dotenv
-import dotenv from 'dotenv';
-
+import dotenv from "dotenv";
 // Con esta función se cargan las variables
 // de entorno, un aspecto importante es que en
 // caso de no existir el archivo ".env" esta
