@@ -1,45 +1,57 @@
+// Helps to handle http errors
 import createError from 'http-errors';
-// import the Express Library
+// Import the Express Library
 import express from 'express';
 // Is a Core-Node library to manage system paths
 import path from 'path';
-// helps to parse client cookies
+// Helps to parse client cookies
 import cookieParser from 'cookie-parser';
-// library to log http commuication
+// Library to log http communication
 import morgan from 'morgan';
-// importing routes
-import indexRouter from '@server/routes/index';
-import usersRouter from '@server/routes/users';
-import apiRouter from '@server/routes/api';
 
-// setting webpack modules
+// Importing template-engine
+import configTemplateEngine from '@server/config/templateEngine';
+
+// Setting Webpack Modules
 import webpack from 'webpack';
 import WebpackDevMiddleware from 'webpack-dev-middleware';
-
-// importing webpack configuration
 import WebpackHotMiddleware from 'webpack-hot-middleware';
+// Importing webpack configuration
 import webpackConfig from '../webpack.dev.config';
 
-// we are creating the express instance
+// Impornting winston logger
+import log from './config/winston';
+
+// Importando enrutador
+import router from './router';
+
+// Creando variable del directorio raiz
+// eslint-disable-next-line
+global['__rootdir'] = path.resolve(process.cwd());
+
+// We are creating the express instance
 const app = express();
 
-// get the execution node
+// Get the execution mode
 const nodeEnviroment = process.env.NODE_ENV || 'production';
 
-// deciding if we add webpack middleware or not
+// Deciding if we add webpack middleware or not
 if (nodeEnviroment === 'development') {
-  // Start webpack dev server
-  console.log('🏆Ejecutando modo desarrollo');
-  // Adding the key "mode" with its value develoment
+  // Start Webpack dev server
+  console.log('🛠️  Ejecutando en modo desarrollo');
+  // Adding the key "mode" with its value "development"
   webpackConfig.mode = nodeEnviroment;
   // Setting the port
-  webpackConfig.devServer.port = process.env.port;
-  // setting up the HMR (Hot module replacement)
+  webpackConfig.devServer.port = process.env.PORT;
+  // Setting up the HMR (Hot Module Replacement)
   webpackConfig.entry = [
-    'webpack-hot-middleware/client?reload=true$timeout=1000',
+    'webpack-hot-middleware/client?reload=true&timeout=1000',
     webpackConfig.entry,
   ];
-  // creating the bundler
+  // Agregar el plugin a la configuración de desarrollo
+  // de webpack
+  webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
+  // Creating the bundler
   const bundle = webpack(webpackConfig);
   // Enabling the webpack middleware
   app.use(
@@ -47,28 +59,18 @@ if (nodeEnviroment === 'development') {
       publicPath: webpackConfig.output.publicPath,
     }),
   );
-  // enabling the webpack hot HMR
+  //  Enabling the webpack HMR
   app.use(WebpackHotMiddleware(bundle));
 } else {
-  console.log('🧧 Ejecutando en modo produccion🧧');
+  console.log('🏭 Ejecutando en modo producción 🏭');
 }
 
-// view engine setup
-// we are declaring the localization of the views
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
-// que es app es una instancia de express
-// Register midleware
-// app.use ((req,res,next) => {
-// console.log("✌ se ha recivido una peticion");
-// next();
-// });
-// app.use((req,res,next)=>{
-//   console.log(`🙌 IP: ${req.ip}`);
-//   next();
-// });
+// Configuring the template engine
+configTemplateEngine(app);
+
+// Registering middlewares
 // Log all received requests
-app.use(morgan('dev'));
+app.use(morgan('dev', { stream: log.stream }));
 // Parse request data into json
 app.use(express.json());
 // Decode url info
@@ -77,13 +79,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // Set up the static file server
 app.use(express.static(path.join(__dirname, '../public')));
-// registering routes
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/api', apiRouter);
+
+// Registering routes
+router.addRoutes(app);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
+  log.info(`404 Pagina no encontrada ${req.method} ${req.originalUrl}`);
   next(createError(404));
 });
 
@@ -95,6 +97,7 @@ app.use((err, req, res) => {
 
   // render the error page
   res.status(err.status || 500);
+  log.error(`${err.status || 500} - ${err.message}`);
   res.render('error');
 });
 

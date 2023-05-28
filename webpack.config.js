@@ -22,9 +22,7 @@ module.exports = {
     // of the project's static files
     path: path.resolve(__dirname, "public"),
     // 2.2 Output file name
-    filename: "bundle.js",
-    //2.3
-    publicPath: '/'
+    filename: "bundle.js"
   },
   // Adding a module to webpack
   module: {
@@ -45,7 +43,7 @@ module.exports = {
                   {
                     'modules': false,
                     'useBuiltIns': 'usage',
-                    'targets': {"chrome": "80"},
+                    'targets': '> 0.25%, not dead',
                     'corejs': 3
                   }
                 ]
@@ -65,4 +63,3 @@ module.exports = {
     filename: 'styles/app.css'
   })]
 }
-   
