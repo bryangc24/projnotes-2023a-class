@@ -9,7 +9,6 @@ import 'materialize-css/dist/js/materialize';
 /* eslint-enable */
 
 // Inicializando Scripts de Materialize para interactividad
-
 M.AutoInit();
 
 console.log('Webpack Working Middleware!!! 📦');
