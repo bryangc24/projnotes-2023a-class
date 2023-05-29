@@ -1,11 +1,12 @@
 // Actions methods
 // GET "/project"
 const showDashboard = (req, res) => {
-  res.end('⭐ UNDER CONSTRUCTION: GET /projects ⭐');
+  res.send('⚠️ UNDER CONSTRUCTION: GET /project ⚠️');
 };
+
 // GET "/project/add"
 const add = (req, res) => {
-  res.end('⭐ UNDER CONSTRUCTION: GET /projects/add ⭐');
+  res.render('project/addView');
 };
 
 // Controlador user
