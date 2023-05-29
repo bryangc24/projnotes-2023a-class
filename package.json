@@ -53,5 +53,10 @@
     "prettier": "^2.8.8",
     "webpack-cli": "^5.1.1",
     "webpack-dev-server": "^4.15.0"
-  }
+  },
+  "description": "Class project from the FullStack Web Development \r Subject.",
+  "main": "webpack.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
