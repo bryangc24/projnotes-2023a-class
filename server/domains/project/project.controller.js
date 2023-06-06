@@ -12,6 +12,7 @@ const showDashboard = async (req, res) => {
   // Consultado todos los proyectos
   const projects = await ProjectModel.find({}).lean().exec();
   // Enviando los proyectos al cliente en JSON
+  log.info('Se entrega dashboard de proyectos');
   res.render('project/dashboardView', { projects });
 };
 
@@ -60,10 +61,19 @@ const addPost = async (req, res) => {
   }
 };
 
+// GET "/project/edit/:id"
+const edit = (req, res) => {
+  // Extrayendo el id por medio de los parametros de url
+  const { id } = req.params;
+  // Se manda a renderizar la vista de edición
+  res.render('project/editView', { id });
+};
+
 // Controlador user
 export default {
   // Action Methods
   showDashboard,
   add,
   addPost,
+  edit,
 };
