@@ -4,13 +4,14 @@ import homeRouter from './domains/home/home.router';
 import userRouter from './domains/user/user.router';
 // Imporntado enrutador project
 import projectRouter from './domains/project/project.router';
+
 // Función que agrega rutas
 const addRoutes = (app) => {
-  // Agregando enrutado de Home
+  // Agregando el enrutador de home
   app.use('/', homeRouter);
-  // Agregar el enrutado de user
+  // Agregado el enrutado de user
   app.use('/user', userRouter);
-  // Agregar el enrutado de user
+  // Agregado el enrutado de project
   app.use('/project', projectRouter);
   return app;
 };
